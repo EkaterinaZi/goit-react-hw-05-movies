@@ -2,7 +2,7 @@ import { useState } from "react";
 import { fetchSearchMovies } from "components/Utils/Fetch";
 const Movies = () =>{ 
 const [input, setInput] = useState('')
-const [movies, setMovies] = useState([])
+const [setMovies] = useState([])
 
 const handleChange = e => {
     setInput(e.currentTarget.value.toLowerCase())
