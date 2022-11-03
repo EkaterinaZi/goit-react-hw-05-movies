@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { fetchSearchMovies } from "components/Utils/Fetch";
+import { Link, useLocation} from "react-router-dom"
 const Movies = () =>{ 
 const [input, setInput] = useState('')
-const [setMovies] = useState([])
+const [movies, setMovies] = useState([])
+const location = useLocation();
+useEffect(() => {
+    if(!input){
+        return
+    }
+    fetchSearchMovies(input)
+    .then((data => setMovies([...data.results])))
+},[input])
+
 
 const handleChange = e => {
     setInput(e.currentTarget.value.toLowerCase())
@@ -13,9 +23,6 @@ const handleSubmit = e => {
         alert('Enter data')
         return
     }
-    fetchSearchMovies(input)
-    .then((data => setMovies([...data.results])))
-    console.log(input)
     setInput('')
 }
 
@@ -26,8 +33,12 @@ const handleSubmit = e => {
         <label> Enter data
             <input onChange={handleChange}></input>
         </label>
-
        </form>
+       <ul>
+       {movies.map(({id, title}) => <li key={id}><Link to={`${id}`} state={{from: location}}>{title}</Link>
+    </li>)}
+       </ul>
+
        </>   
        )
     }
