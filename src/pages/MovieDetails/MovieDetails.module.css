@@ -1,0 +1,63 @@
+.title{
+    text-align: center;
+    text-transform: uppercase;
+    color: grey;
+    margin-right: auto;
+    margin-left: auto;
+ 
+}
+.backLink{
+    color: black;
+    border: solid 2px black;
+    padding: 7px ; 
+    background-color: white;
+    animation-name: button;
+    animation-duration: 3s;
+}
+
+
+  
+  @keyframes button {
+    from {background-color: white;}
+    to {background-color: grey;}
+  }
+  .titleMovie{
+    text-align: center;
+    text-transform: uppercase;
+    color: grey;
+    margin-right: auto;
+    margin-left: auto;
+  
+    font-weight: 700;
+  }
+  .descr{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+  }
+  .bold{
+    font-weight: 700;
+  }
+
+.img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.description{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+background-color: lightgray;
+padding: 10px;
+}
+
+.link{
+    text-transform: uppercase;
+    font-weight: 600;
+    color: white;
+    font-size: 15;
+}
+.link:hover, .link:focus{
+    color: black;
+}

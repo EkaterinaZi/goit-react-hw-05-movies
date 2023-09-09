@@ -1,0 +1,19 @@
+.title{
+    text-align: center;
+    text-transform: uppercase;
+    color: grey;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+.movie{
+    display: block;
+    color: black;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 50px;
+
+}
+.movie:hover, .movie:focus{
+    color:green}

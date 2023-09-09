@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import {fetchPopularMovies} from "components/Utils/Fetch"
 import { NavLink, useLocation } from "react-router-dom"
+import css from './Home.module.css'
 
 const Home = () =>{
 const [movies, setMovies] = useState([])
@@ -12,10 +13,10 @@ useEffect(() => {
 
 return(
     <>
-    <h2>Home</h2>
+    <h2 className={css.title}>Home</h2>
     <ul>
     {movies.map(({id, title}) => <li key={id}>
-        <NavLink to={`movies/${id}`} state={{from: location}}>{title}</NavLink>
+        <NavLink to={`movies/${id}`} state={{from: location}} className={css.movie}>{title}</NavLink>
     </li>)}
     </ul>
     </>
