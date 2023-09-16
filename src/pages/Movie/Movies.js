@@ -12,8 +12,11 @@ const [loading, setLoading] = useState(false);
 
 useEffect(() => {
     if (!query) {
-        return setMovies([]);
+        setMovies([]);
+        return 
       }
+     /* fetchSearchMovies(query)
+      .then((data => setMovies([...data.results])))  */
 },[query]);
 
 const handleChange = e => {
