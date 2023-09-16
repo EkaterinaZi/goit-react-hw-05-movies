@@ -36,7 +36,9 @@ return(
     <p >Vote average <span className={css.bold}>{vote_average}</span></p>
     <p>{overview}</p>
     </div>
-    <img src={ `https://image.tmdb.org/t/p/w300/${poster_path}`} alt = "actor" className={css.img}></img>
+    <img src={ poster_path
+        ? `https://image.tmdb.org/t/p/w300/${poster_path}` : '../../noImg.jpg'
+    } alt = "actor" className={css.img}></img>
    
     {genres.map((g) => <p key={g.id}>{g.name}</p> )}
     

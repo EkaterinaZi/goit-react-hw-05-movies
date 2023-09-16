@@ -11,9 +11,10 @@ useEffect(() => {
     .then((data => setMovies([...data.results])))  
 },[])
 
+
 return(
     <>
-    <h2 className={css.title}>Home</h2>
+    <h2 className={css.title}>Trending now</h2>
     <ul>
     {movies.map(({id, title}) => <li key={id}>
         <NavLink to={`movies/${id}`} state={{from: location}} className={css.movie}>{title}</NavLink>

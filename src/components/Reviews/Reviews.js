@@ -14,8 +14,6 @@ const Reviews = () =>{
     if(!reviews){
       return null
     }
-     console.log(reviews)
-
         return(
         <>
         {reviews.length !== null && <div>

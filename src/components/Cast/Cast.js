@@ -25,8 +25,10 @@ if(!cast){
           <ul className={css.table}>
            {cast.cast.map((cast) => 
            <li key={cast.cast_id}>
-            {cast.profile_path!== null &&  <img src={`https://image.tmdb.org/t/p/w300/${cast.profile_path}`} alt="actor" width={150}></img>}
-            {cast.profile_path!== null &&   <p>{cast.original_name}</p>}
+            <img src={cast.profile_path
+               ? `https://image.tmdb.org/t/p/w300/${cast.profile_path}` : '../../noImg.jpg'} 
+            alt="actor" width={150} height={210}></img>
+            <p>{cast.original_name}</p>
             </li>)}
          </ul>
          </div>}

@@ -4,45 +4,53 @@ import { Link, useLocation, useSearchParams} from "react-router-dom"
 import css from './Movie.module.css'
 const Movies = () =>{ 
 const [searchParams, setSearchParams] =useSearchParams();
-const movieId = searchParams.get('movieId') ?? "";
-
+const query = searchParams.get('query') ?? "";
 const [movies, setMovies] = useState([])
 const location = useLocation();
+const [loading, setLoading] = useState(false);
+
 
 useEffect(() => {
-    if(!movieId){
-        return
-    }
-    fetchSearchMovies(movieId)
-    .then((data => setMovies([...data.results])))
-},[movieId])
-
-
+    if (!query) {
+        return setMovies([]);
+      }
+},[query]);
 
 const handleChange = e => {
     if(e.currentTarget.value === ""){ return setSearchParams({})}
-    setSearchParams({movieId: e.currentTarget.value});
+    setSearchParams ({query: e.currentTarget.value}) ;
     }
 
-const handleSubmit = e => {
+const handleSubmit = async e => {
     e.preventDefault();
-    if(movieId.trim() === ''){
+    if(query.trim() === ''){
+        
         alert('Enter data')
-        return
+        return 
+    } 
+    try{
+            const data = await  fetchSearchMovies(query)
+            setMovies([...data.results])
+        }
+     catch (error){}
+     finally {
+        setLoading(false);
+      }
     }
-    setMovies('')
-}
+ 
 
     return(
         <>
        <h2 className={css.title}>Movies</h2>
        <form onSubmit={handleSubmit}>
         <label> Enter data
-            <input type="text" 
-            value={movieId} onChange={handleChange} ></input>
+            <input type="text" onChange={handleChange}
+            value={query} ></input>
         </label>
+        <button type="submit"  >Find</button>
        </form>
        <ul>
+        {loading && <div>Loading...</div>}
       {movies.map(({id, title}) => {
         return ( 
         <li key={id}>
