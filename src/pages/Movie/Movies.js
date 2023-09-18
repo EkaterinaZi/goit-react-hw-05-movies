@@ -15,8 +15,7 @@ useEffect(() => {
         setMovies([]);
         return 
       }
-      fetchSearchMovies(query)
-      .then((data => setMovies([...data.results])))  
+      
 },[query]);
 
 const handleChange = e => {
